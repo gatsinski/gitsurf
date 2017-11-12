@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { GitHubService } from '../../services/github';
+import { GitHubProvider } from '../../providers/github/github';
 
 
 @IonicPage()
@@ -15,7 +15,7 @@ export class ProfilePage {
   constructor(
     private navCtrl: NavController,
     private navParams: NavParams,
-    private github: GitHubService
+    private github: GitHubProvider
   ) {
     if (!github.userData) {
       this.github.getDetailsUser(github.username).subscribe(

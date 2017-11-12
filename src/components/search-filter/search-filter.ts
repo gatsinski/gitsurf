@@ -3,7 +3,7 @@ import { Output } from '@angular/core';
 import { Input } from '@angular/core';
 import { EventEmitter } from '@angular/core';
 
-import { GitHubService } from '../../services/github';
+import { GitHubProvider } from '../../providers/github/github';
 
 
 @Component({
@@ -30,7 +30,7 @@ export class SearchFilterComponent {
   public orderChoice = 'desc';
   public searchTerm;
 
-  constructor(private github: GitHubService) {
+  constructor(private github: GitHubProvider) {
   }
 
   search() {

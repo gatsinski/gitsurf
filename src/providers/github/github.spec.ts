@@ -9,18 +9,18 @@ import {
 } from "@angular/http";
 import {TestBed, fakeAsync, tick} from '@angular/core/testing';
 import {MockBackend} from "@angular/http/testing";
-import {GitHubService} from './github';
+import {GitHubProvider} from './github';
 
 describe('Service: Search', () => {
 
-  let service: GitHubService;
+  let service: GitHubProvider;
   let backend: MockBackend;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [JsonpModule],
       providers: [
-        GitHubService,
+        GitHubProvider,
         MockBackend,
         BaseRequestOptions,
         {
@@ -40,7 +40,7 @@ describe('Service: Search', () => {
     backend = TestBed.get(MockBackend);
 
     // Returns a service with the MockBackend so we can test with dummy responses
-    service = TestBed.get(GitHubService);
+    service = TestBed.get(GitHubProvider);
 
   });
 

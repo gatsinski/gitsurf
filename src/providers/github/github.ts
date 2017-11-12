@@ -3,7 +3,7 @@ import { Http, Headers } from '@angular/http';
 
 
 @Injectable()
-export class GitHubService {
+export class GitHubProvider {
   public isAuthenticated: Boolean = false;
   public username: String = null;
   public password: String = null;

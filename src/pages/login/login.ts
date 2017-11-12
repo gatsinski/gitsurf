@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 
 import { IonicPage, App, NavController, ToastController, Tabs } from 'ionic-angular';
 
-import { GitHubService } from '../../services/github';
+import { GitHubProvider } from '../../providers/github/github';
 import { ProfilePage } from '../profile/profile';
 
 
@@ -13,7 +13,7 @@ import { ProfilePage } from '../profile/profile';
 })
 export class LoginPage {
   constructor(
-    private github: GitHubService,
+    private github: GitHubProvider,
     private app: App,
     private navCtrl: NavController,
     private toastCtrl: ToastController) {

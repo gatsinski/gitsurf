@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
-import { GitHubService } from '../../services/github';
+import { GitHubProvider } from '../../providers/github/github';
 
 
 @IonicPage()
@@ -15,7 +15,7 @@ export class DetailsIssuePage {
   private errorMessage;
 
   constructor(
-    private github: GitHubService,
+    private github: GitHubProvider,
     private navCtrl: NavController,
     private navParams: NavParams
   ) {

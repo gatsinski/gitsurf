@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { SearchPage } from '../search/search';
 import { LoginPage } from '../login/login';
 
-import { GitHubService } from '../../services/github';
+import { GitHubProvider } from '../../providers/github/github';
 
 
 @Component({
@@ -13,7 +13,7 @@ export class TabsPage {
   searchPage = SearchPage;
   loginPage = LoginPage;
 
-  constructor(private github: GitHubService) {
+  constructor(private github: GitHubProvider) {
   }
 
   getLoginTabTitle() {

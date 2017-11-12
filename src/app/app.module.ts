@@ -19,7 +19,7 @@ import { ProfilePage } from './../pages/profile/profile';
 import { TabsPage } from '../pages/tabs/tabs';
 
 import { SearchFilterComponent } from '../components/search-filter/search-filter';
-import { GitHubService } from '../services/github';
+import { GitHubProvider } from '../providers/github/github';
 
 
 
@@ -60,7 +60,7 @@ import { GitHubService } from '../services/github';
   providers: [
     StatusBar,
     SplashScreen,
-    GitHubService,
+    GitHubProvider,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
