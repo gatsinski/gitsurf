@@ -1,0 +1,78 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>
+      <span *ngIf="userData; else elseBlock">
+        {{ userData.login }}
+      </span>
+      <ng-template #elseBlock>
+          {{ errorMessage }}
+      </ng-template>
+    </ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-card *ngIf="userData">
+    <ion-item>
+      <ion-grid>
+        <ion-row>
+          <ion-col col-6>
+            <img src="{{ userData.avatar_url }}">
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+
+    <ion-item *ngIf="userData.name">
+      <h1>{{ userData.name }}</h1>
+    </ion-item>
+    <ion-item *ngIf="userData.email">
+        <ion-icon name="mail" item-start></ion-icon>
+        {{ userData.email }}
+    </ion-item>
+    <ion-item *ngIf="userData.location">
+        <ion-icon name="home" item-start></ion-icon>
+        {{ userData.location }}
+    </ion-item>
+    <ion-item>
+      <ion-icon name="md-git-branch" item-start></ion-icon>
+      Public repositories
+      <ion-badge item-end>{{ userData.public_repos }}</ion-badge>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon name="md-git-branch" item-start></ion-icon>
+      Public gists
+      <ion-badge item-end>{{ userData.public_gists }}</ion-badge>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon name="md-people" item-start></ion-icon>
+      Followers
+      <ion-badge item-end>{{ userData.followers }}</ion-badge>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon name="md-people" item-start></ion-icon>
+      Following
+      <ion-badge item-end>{{ userData.following }}</ion-badge>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon name="md-calendar" item-start></ion-icon>
+      Register date
+      <ion-badge item-end>{{ userData.created_at | date:'dd.MM.y HH:mm' }}</ion-badge>
+    </ion-item>
+
+  </ion-card>
+
+  <ion-card *ngIf="errorMessage">
+    <ion-card-header>
+      {{ errorMessage }}
+    </ion-card-header>
+  </ion-card>
+</ion-content>

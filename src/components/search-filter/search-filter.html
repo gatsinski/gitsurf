@@ -1,0 +1,33 @@
+<!-- Generated template for the SearchFilterComponent component -->
+<ion-item>
+    <ion-label>Sort by</ion-label>
+    <ion-select
+      class="form-control"
+      [(ngModel)]="sortChoice">
+      <ion-option
+        *ngFor="let choice of sortChoices"
+        [value]="choice.value">
+        {{ choice.display }}
+      </ion-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Order by</ion-label>
+    <ion-select
+      class="form-control"
+      [(ngModel)]="orderChoice">
+      <ion-option
+        *ngFor="let choice of orderChoices"
+        [value]="choice.value">
+        {{ choice.display }}
+      </ion-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Search term</ion-label>
+    <ion-input [(ngModel)]="searchTerm" type="text"></ion-input>
+  </ion-item>
+
+  <button ion-button block (click)="search()">Search</button>

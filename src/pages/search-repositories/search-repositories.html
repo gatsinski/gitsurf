@@ -1,0 +1,77 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Search repositories
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <search-filter [searchType]='type' (searchResponse)="updateApiResponse($event)"></search-filter>
+
+  <ion-list *ngIf="apiResponse">
+    <ion-item>
+      <span>{{ apiResponse.total_count }} repositories found</span>
+    </ion-item>
+
+    <ion-card *ngFor="let item of apiResponse.items">
+    <ion-card-content>
+        <ion-card-title>
+          {{ item.name }}
+          <span *ngIf="item.fork==true">
+            <ion-icon name="md-git-branch"></ion-icon>
+          </span>
+        </ion-card-title>
+      </ion-card-content>
+
+      <ion-row>
+        <ion-col col-6>
+          <button ion-button icon-left clear small
+            (click)="goToUser(item.owner.login)">
+            <ion-icon name="contact"></ion-icon>
+            <div> {{ item.owner.login }} </div>
+          </button>
+        </ion-col>
+        <ion-col col-6>
+          <button ion-button icon-left clear small>
+            <ion-icon name="code"></ion-icon>
+            <div>{{ item.language }}</div>
+          </button>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col col-3>
+          <button ion-button icon-left clear small>
+            <ion-icon name="md-git-branch"></ion-icon>
+            <div> {{ item.forks_count }} </div>
+          </button>
+        </ion-col>
+        <ion-col col-3>
+          <button ion-button icon-left clear small>
+            <ion-icon name="star"></ion-icon>
+            <div>{{ item.stargazers_count }}</div>
+          </button>
+        </ion-col>
+        <ion-col col-3>
+          <button ion-button icon-left clear small>
+            <ion-icon name="eye"></ion-icon>
+            <div>{{ item.watchers_count }}</div>
+          </button>
+        </ion-col>
+        <ion-col col-3>
+          <button ion-button icon-left clear small>
+            <ion-icon name="warning"></ion-icon>
+            <div>{{ item.open_issues_count }}</div>
+          </button>
+        </ion-col>
+      </ion-row>
+      <ion-item>
+        <button item-end ion-button icon-left small (click)="goToDetails(item)">
+          <ion-icon name="share-alt"></ion-icon>
+          Details
+        </button>
+      </ion-item>
+    </ion-card>
+  </ion-list>
+</ion-content>

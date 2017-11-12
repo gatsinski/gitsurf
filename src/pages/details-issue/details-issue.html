@@ -1,0 +1,66 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>
+      <span *ngIf="issue; else elseBlock">
+        Issue {{ issue.number }}
+      </span>
+      <ng-template #elseBlock>
+          {{ errorMessage }}
+      </ng-template>
+    </ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-card *ngIf="issue">
+    <ion-card-content>
+      <ion-card-title>
+        {{ issue.title }}
+      </ion-card-title>
+    </ion-card-content>
+    <ion-row>
+      <ion-col col-6>
+        <button ion-button icon-left clear small>
+          <ion-icon name="clipboard"></ion-icon>
+          <div> {{ issue.state }} </div>
+        </button>
+      </ion-col>
+      <ion-col col-6>
+        <button ion-button icon-left clear small>
+          <ion-icon name="text"></ion-icon>
+          <div>{{ issue.comments }} comments</div>
+        </button>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col col-8>
+        <button ion-button icon-left clear small>
+          <ion-icon name="contact"></ion-icon>
+          <div> {{ issue.user.login }} </div>
+        </button>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col col-12>
+        <button ion-button icon-left clear small>
+          <ion-icon name="clock"></ion-icon>
+          <div>Created on {{ issue.created_at | date:'dd.MM.y HH:mm' }}</div>
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-card>
+
+  <ion-list *ngIf="comments">
+
+    <ion-item *ngFor="let comment of comments">
+      <ion-badge> {{ comment.user.login }} </ion-badge>
+      <div text-wrap [innerHTML]="comment.body_html"></div>
+    </ion-item>
+  </ion-list>
+
+</ion-content>

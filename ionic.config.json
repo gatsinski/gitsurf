@@ -1,0 +1,8 @@
+{
+  "name": "gitsurf",
+  "app_id": "4f5bab23",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}
