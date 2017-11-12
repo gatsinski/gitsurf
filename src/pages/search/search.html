@@ -1,0 +1,28 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Search</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list inset>
+    <button ion-item icon-start (click)="goToSearchIssuesPage()">
+      <ion-icon name="warning"></ion-icon>
+      Issues
+    </button>
+
+    <button ion-item icon-start (click)="goToSearchRepositoriesPage()">
+      <ion-icon name="logo-octocat"></ion-icon>
+      Repositories
+    </button>
+
+    <button ion-item icon-start (click)="goToSearchUsersPage()">
+      <ion-icon name="contacts"></ion-icon>
+      Users
+    </button>
+  </ion-list>
+
+</ion-content>

@@ -1,0 +1,29 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Login</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list *ngIf="!github.isAuthenticated">
+    <form #form="ngForm" (ngSubmit)="submit(form)" *ngIf="!github.isAuthenticated">
+      <ion-item>
+        <ion-label floating>Username</ion-label>
+        <ion-input required ngModel name="username" #username="ngModel" type="text"></ion-input>
+      </ion-item>
+      <div *ngIf="username.touched && !username.valid">Username is required</div>
+      <ion-item>
+        <ion-label floating>Password</ion-label>
+        <ion-input required ngModel name="password" #password="ngModel" type="password"></ion-input>
+      </ion-item>
+      <div *ngIf="password.touched && !password.valid">Password is required</div>
+      <div pading>
+        <button ion-button block [disabled]="!form.valid">Login</button>
+      </div>
+    </form>
+  </ion-list>
+</ion-content>
+

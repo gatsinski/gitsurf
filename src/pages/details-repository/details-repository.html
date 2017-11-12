@@ -1,0 +1,79 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>
+      <span *ngIf="repository; else elseBlock">
+        {{ repository.name }}
+      </span>
+      <ng-template #elseBlock>
+          {{ errorMessage }}
+      </ng-template>
+    </ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-card *ngIf="repository">
+    <ion-card-content>
+      <ion-card-title>
+        {{ repository.name }}
+        <span *ngIf="repository.fork==true">
+          <ion-icon name="md-git-branch"></ion-icon>
+        </span>
+      </ion-card-title>
+    </ion-card-content>
+
+    <ion-row>
+      <ion-col col-12>
+        <button ion-button icon-left clear small
+          (click)="goToUser(repository.owner.login)">
+          <ion-icon name="contact"></ion-icon>
+          <div> {{ repository.owner.login }} </div>
+        </button>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col col-3>
+        <button ion-button icon-left clear small>
+          <ion-icon name="md-git-branch"></ion-icon>
+          <div> {{ repository.forks_count }} </div>
+        </button>
+      </ion-col>
+      <ion-col col-3>
+        <button ion-button icon-left clear small>
+          <ion-icon name="star"></ion-icon>
+          <div>{{ repository.stargazers_count }}</div>
+        </button>
+      </ion-col>
+      <ion-col col-3>
+        <button ion-button icon-left clear small>
+          <ion-icon name="eye"></ion-icon>
+          <div>{{ repository.watchers_count }}</div>
+        </button>
+      </ion-col>
+      <ion-col col-3>
+        <button ion-button icon-left clear small>
+          <ion-icon name="warning"></ion-icon>
+          <div>{{ repository.open_issues_count }}</div>
+        </button>
+      </ion-col>
+    </ion-row>
+
+    <ion-card-content>
+
+    </ion-card-content>
+
+  </ion-card>
+
+  <div *ngIf="repository" padding [innerHTML]="readme"></div>
+
+  <ion-card *ngIf="errorMessage">
+    <ion-card-header>
+      {{ errorMessage }}
+    </ion-card-header>
+  </ion-card>
+</ion-content>
